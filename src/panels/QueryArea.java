@@ -82,7 +82,7 @@ public class QueryArea extends JPanel {
 	 */
 	private void initQueryArea() {
 		
-		queryArea = new JTextArea(20,68);
+		queryArea = new JTextArea(15,68);
 		/*Instantiate a scroll on that query area*/
 		queryScroll = new JScrollPane(queryArea);
 		
@@ -93,21 +93,11 @@ public class QueryArea extends JPanel {
 	 */
 	private void initResultArea() {
 		
-		resultArea = new JTextArea(6,68);
+		resultArea = new JTextArea(12,68);
 		resultArea.setEditable(false);
-		/*Increase the size of font in resultArea*/
 		
 		/*Instantiate a scroll on that scroll area*/
 		resultScroll = new JScrollPane(resultArea);
-		
-	}
-	
-	/*
-	 * Method that initiates the execute button
-	 */
-	private void initExecuteButton() {
-		
-		executeButton = new JButton("Execute query");
 		
 	}
 	
@@ -117,12 +107,21 @@ public class QueryArea extends JPanel {
 	private void initFont() {
 		
 		Font font = queryArea.getFont();
-		float fontSize = font.getSize() + 2f;
+		float fontSize = font.getSize() + 1;
 		queryArea.setFont(font.deriveFont(fontSize));
 		
 		font = resultArea.getFont();
-		fontSize = font.getSize() + 2f;
+		fontSize = font.getSize() + 1;
 		resultArea.setFont(font.deriveFont(fontSize));
+		
+	}
+	
+	/*
+	 * Method that initiates the execute button
+	 */
+	private void initExecuteButton() {
+		
+		executeButton = new JButton("Execute query");
 		
 	}
 	

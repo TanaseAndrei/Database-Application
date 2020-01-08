@@ -9,6 +9,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
+import model.Populate;
+
 @SuppressWarnings("serial")
 public class DatabaseArea extends JPanel {
 

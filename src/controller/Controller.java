@@ -9,8 +9,8 @@ import java.util.List;
 import javax.swing.JList;
 
 import frame.MyFrame;
+import model.Populate;
 import model.Query;
-import panels.Populate;
 
 public class Controller {
 
@@ -35,10 +35,13 @@ public class Controller {
 		public void actionPerformed(ActionEvent e) {
 			String query = frame.getQuery();
 			StringBuilder buildString = new StringBuilder();
-			List<String> resultQuery = new Populate().query(query);
+			List<String> resultQuery = new Query().query(query);
 			for(String iterator : resultQuery) {
-				System.out.println(iterator);
+				buildString.append(iterator);
+				buildString.append('\n');
 			}
+			
+			frame.setResult(buildString.toString());
 			
 		}
 		

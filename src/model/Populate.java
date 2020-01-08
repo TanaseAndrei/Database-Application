@@ -1,4 +1,4 @@
-package panels;
+package model;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -54,26 +54,5 @@ public class Populate {
 		
 		return result;
 	}
-	
-	public List<String> query(String query){
-		List<String> result = new LinkedList<String>();
-		ResultSet rs = null;
-		String[] types = {"TABLE"};
-		try(Connection conn = DriverManager.getConnection(url, user, password)){
-			PreparedStatement ps = conn.prepareStatement(query);
-			rs = ps.executeQuery();
-			while(rs.next()) {
-				result.add(rs.getString(1));
-			}
-			rs.close();
-			conn.close();
-		} catch(Exception e) {
-			//e.printStackTrace();
-			System.err.println("Error!");
-		} 
-		
-		return result;
-	}
-	
 	
 }
