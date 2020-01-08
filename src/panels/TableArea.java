@@ -1,16 +1,20 @@
-package classes;
+package panels;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
 public class TableArea extends JPanel {
 
 	private JList<String> tbArea;
+	private DefaultListModel<String> defaultModel;
+	private JScrollPane scroll = new JScrollPane();
 	
 	public TableArea() {
 		
@@ -35,13 +39,28 @@ public class TableArea extends JPanel {
 	
 	private void initJList() {
 		
-		tbArea = new JList<String>();
+		defaultModel = new DefaultListModel<String>();
+		tbArea = new JList<String>(defaultModel);
+		tbArea.setSelectedIndex(-1);
+		scroll.setViewportView(tbArea);
 		
 	}
 	
-	private void packing() {
+	public void addElement(String element) {
 		
-		add(tbArea,BorderLayout.CENTER);
+		defaultModel.addElement(element);
+		
+	}
+	
+	public void clearList() {
+		
+		defaultModel.clear();
+		
+	}
+	
+private void packing() {
+		
+		add(scroll,BorderLayout.CENTER);
 		
 	}
 	

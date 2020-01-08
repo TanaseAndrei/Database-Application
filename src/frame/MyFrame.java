@@ -1,14 +1,20 @@
-package classes;
+package frame;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 
 import javax.swing.JFrame;
+
+import panels.DatabaseArea;
+import panels.QueryArea;
+import panels.TableArea;
 
 @SuppressWarnings("serial")
 public class MyFrame extends JFrame{
 
-	private static final int WIDTH = 720;
-	private static final int HEIGHT = 1280;
+	private final int HEIGHT = 720;
+	private final int WIDTH = 1280;
 	
 	private QueryArea queryArea;
 	private DatabaseArea dbArea;
@@ -26,13 +32,14 @@ public class MyFrame extends JFrame{
 		
 		/*Pack everything together and make the frame visible*/
 		packing();
+		
 		setVisible(true);
 		
 	}
 	
 	private void initFrame() {
 		
-		setSize(HEIGHT,WIDTH);
+		setSize(WIDTH,HEIGHT);
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -46,6 +53,30 @@ public class MyFrame extends JFrame{
 		dbArea = new DatabaseArea();
 		tbArea = new TableArea();
 		
+	}
+	
+	public void addToTable(String element) {
+		tbArea.addElement(element);
+	}
+	
+	public void clearTableList() {
+		tbArea.clearList();
+	}
+	
+	public String getQuery() {
+		return queryArea.getQuery();
+	}
+	
+	public void setResult(String result) {
+		queryArea.setQueryResult(result);
+	}
+	
+	public void addExecuteQueryButtonListener(ActionListener al) {
+		queryArea.addExecuteButtonListener(al);
+	}
+	
+	public void addListClickListener(MouseAdapter ma) {
+		dbArea.addDatabaseClickListener(ma);
 	}
 	
 	/*

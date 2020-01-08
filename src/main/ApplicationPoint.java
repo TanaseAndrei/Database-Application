@@ -1,13 +1,19 @@
-package classes;
+package main;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import controller.Controller;
+import frame.MyFrame;
+import model.Query;
+
 public class ApplicationPoint {
 
 	public static void main(String[] args) {
+		
 		SwingUtilities.invokeLater(new Runnable() {
+			
 			public void run() {
 				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -16,7 +22,13 @@ public class ApplicationPoint {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				new MyFrame("Database");
+				
+				MyFrame frame = new MyFrame("Application");
+				Query query = new Query();
+				
+				@SuppressWarnings("unused")
+				Controller controller = new Controller(frame,query);
+				
 			}
 		});
 
