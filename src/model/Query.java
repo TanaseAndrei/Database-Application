@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,6 +22,8 @@ public class Query {
 		ResultSet rs = null;
 		try(Connection conn = DriverManager.getConnection(url, user, password)){
 			PreparedStatement ps = conn.prepareStatement(query);
+			ResultSetMetaData md = ps.getMetaData();
+			//int numberOfColumns
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				result.add(rs.getString(1));

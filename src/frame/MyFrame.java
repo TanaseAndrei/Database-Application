@@ -1,10 +1,13 @@
 package frame;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import panels.DatabaseArea;
 import panels.QueryArea;
@@ -24,16 +27,26 @@ public class MyFrame extends JFrame{
 		
 		super(title);
 		
-		/*Initiate the frame*/
-		initFrame();
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = dim.getWidth();
+		double height = dim.getHeight();
 		
-		/*Initiate the panels*/
-		initPanels();
-		
-		/*Pack everything together and make the frame visible*/
-		packing();
-		
-		setVisible(true);
+		if(!(width == 1920) || !(height == 1080)) {
+			JOptionPane.showMessageDialog(this, "The resolution must be 1920x1080!", "Wrong resolution", JOptionPane.WARNING_MESSAGE);
+		} else {
+			
+			/*Initiate the frame*/
+			initFrame();
+			
+			/*Initiate the panels*/
+			initPanels();
+			
+			/*Pack everything together and make the frame visible*/
+			packing();
+			
+			setVisible(true);
+			
+		}
 		
 	}
 	
